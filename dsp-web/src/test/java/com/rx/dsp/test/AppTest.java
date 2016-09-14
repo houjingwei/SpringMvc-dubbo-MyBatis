@@ -2,13 +2,14 @@ package com.rx.dsp.test;
 
 import java.util.List;
 
-import org.dsp.model.User;
-import org.dsp.service.user.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.dsp.model.User;
+import com.dsp.service.user.UserService;
 
 import junit.framework.TestCase;
 

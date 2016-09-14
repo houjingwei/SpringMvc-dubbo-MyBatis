@@ -11,7 +11,7 @@
 
 	<context:property-placeholder location="classpath:config.properties" />
 
-	<context:component-scan base-package="org.dsp.user.component" />
+	<context:component-scan base-package="com.dsp.user.component" />
 
 	<dubbo:application name="${dubbo.application}" />
 	<dubbo:registry address="${dubbo.registry}" />
@@ -20,6 +20,6 @@
 
 	<import resource="classpath:spring-mybatis.xml" />
 	
-	<dubbo:service interface="org.dsp.service.user.UserService" ref="userService" />
+	<dubbo:service interface="com.dsp.service.user.UserService" ref="userService" />
 
 </beans>
