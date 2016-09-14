@@ -110,6 +110,11 @@
 				<artifactId>mybatis-spring</artifactId>
 				<version>1.3.0</version>
 			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>
@@ -118,6 +123,7 @@
 		<module>dsp-service</module>
 		<module>dsp-model</module>
 		<module>dsp-user-component</module>
-		<module>dsp-cache</module>
+		<module>dsp-utils</module>
+		<module>dsp-cache-component</module>
 	</modules>
 </project>

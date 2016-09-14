@@ -10,6 +10,9 @@
         <dependent-module archiveName="dsp-model-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-model/dsp-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="dsp-utils-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-utils/dsp-utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="dsp-user-component-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-user-component/dsp-user-component">
             <dependency-type>uses</dependency-type>
         </dependent-module>
