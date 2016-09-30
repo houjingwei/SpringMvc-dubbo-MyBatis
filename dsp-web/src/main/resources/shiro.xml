@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context				
+       http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="true">
+
+	<context:component-scan base-package="com.hh.shiro" />
+
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionManager" ref="defaultWebSessionManager" />
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroCacheManager" />
+		<property name="rememberMeManager" ref="rememberMeManager" />
+	</bean>
+
+	<bean id="shiroSessionListener" class="com.hh.shiro.listener.ShiroSessionListener">
+		<property name="shiroSessionRepository" ref="jedisShiroSessionRepository" />
+	</bean>
+
+	<bean id="userDao" class="com.hh.shiro.dao.UserDao" />
+	<bean id="shiroDbRealm" class="com.hh.shiro.ShiroDbRealm" init-method="initCredentialsMatcher">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="jedisShiroSessionDAO" class="com.hh.shiro.session.JedisShiroSessionDAO">
+		<property name="shiroSessionRepository" ref="jedisShiroSessionRepository" />
+	</bean>
+
+	<bean id="jedisShiroSessionRepository" class="com.hh.shiro.session.JedisShiroSessionRepository">
+		<property name="jedisManager" ref="jedisManager" />
+	</bean>
+
+	<bean id="shiroCacheManager" class="com.hh.shiro.cache.ShiroCacheManager">
+		<property name="shiroCacheManager" ref="jedisShiroCacheManager" />
+	</bean>
+
+	<bean id="jedisShiroCacheManager" class="com.hh.shiro.cache.JedisShiroCacheManager">
+		<property name="jedisManager" ref="jedisManager" />
+	</bean>
+
+	<bean id="jedisManager" class="com.hh.shiro.JedisManager">
+		<property name="jedisPool" ref="jedisPool" />
+	</bean>
+
+	<bean id="defaultWebSessionManager"
+		class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="${session.timeout}" />
+		<property name="sessionDAO" ref="jedisShiroSessionDAO" />
+		<property name="sessionIdCookie" ref="simpleCookie" />
+		<property name="sessionListeners">
+			<list>
+				<ref local="shiroSessionListener" />
+			</list>
+		</property>
+		<property name="sessionValidationScheduler" ref="sessionValidationScheduler" />
+		<property name="sessionValidationSchedulerEnabled" value="true" />
+		<property name="deleteInvalidSessions" value="true" />
+	</bean>
+
+	<bean id="sessionValidationScheduler"
+		class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
+		<property name="sessionManager" ref="defaultWebSessionManager" />
+		<property name="interval" value="${session.validate.timespan}" />
+	</bean>
+
+	<bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg index="0" value="JSESSIONID_COOKIE" />
+		<property name="httpOnly" value="true" />
+	</bean>
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/auth/loginPage" />
+		<property name="successUrl" value="/auth/index" />
+		<property name="unauthorizedUrl" value="/auth/denied" />
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="formAuthenticationFilter" />
+				<entry key="kickout" value-ref="kickoutSessionControlFilter" />
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/index.jsp=anon
+				/=anon
+				/auth/** = ssl
+				/css/** = anon
+				/javascripts/** = anon
+				/images/** =
+				anon
+				/** = authc,user,kickout
+			</value>
+		</property>
+	</bean>
+
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="10" />
+		<property name="minIdle" value="5" />
+		<property name="maxWait" value="2000" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="true" />
+	</bean>
+
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="shiroRememberMe" />
+		<property name="maxAge" value="#{7*24*60*60}" /><!-- 7天 (秒) -->
+	</bean>
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('aHVhbmdodWE=')}" />
+		<property name="cookie" ref="rememberMeCookie" />
+	</bean>
+	<bean id="formAuthenticationFilter"
+		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+		<property name="rememberMeParam" value="shiroRememberMe" />
+	</bean>
+
+	<bean id="kickoutSessionControlFilter" class="com.hh.shiro.filter.KickoutSessionControlFilter">
+		<property name="cacheManager" ref="shiroCacheManager" />
+		<property name="sessionManager" ref="defaultWebSessionManager" />
+		<property name="kickoutAfter" value="false" />
+		<property name="maxSession" value="1" />
+		<property name="kickoutUrl" value="/auth/loginPage" />
+	</bean>
+
+</beans>

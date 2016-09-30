@@ -27,7 +27,7 @@ public class AppTest  extends TestCase {
     @Test
     public void cacheTest(){  
     	User user = new User();
-    	user.setUid("12345");
+    	user.setId("12345");
     	user.setPwd("56789");
     	user.setName("hahaha");
     	user.setEmail("hahaha@163.com");

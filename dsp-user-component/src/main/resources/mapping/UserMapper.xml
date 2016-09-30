@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dsp.user.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="org.dsp.model.User" >
-    <id column="uid" property="uid" jdbcType="VARCHAR" />
+    <id column="id" property="uid" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pwd" property="pwd" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    uid,name,pwd,email
+    id,name,pwd,email
   </sql>
   <select id="findList" resultMap="BaseResultMap" >
     select 

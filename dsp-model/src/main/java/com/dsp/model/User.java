@@ -8,15 +8,16 @@ public class User implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String uid;
+	private String id;
 	private String name;
 	private String pwd;
 	private String email;
-	public String getUid() {
-		return uid;
+	
+	public String getId() {
+		return id;
 	}
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
