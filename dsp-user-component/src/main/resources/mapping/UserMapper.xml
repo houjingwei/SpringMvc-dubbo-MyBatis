@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dsp.user.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="org.dsp.model.User" >
+  <resultMap id="BaseResultMap" type="com.dsp.model.User" >
     <id column="id" property="uid" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pwd" property="pwd" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List" > 
     id,name,pwd,email
   </sql>
   <select id="findList" resultMap="BaseResultMap" >
