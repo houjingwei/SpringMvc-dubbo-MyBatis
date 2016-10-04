@@ -6,20 +6,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dsp.model.User;
 import com.dsp.service.cache.CacheService;
 
 
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Unit test for simple App.
  */
-@RunWith(SpringJUnit4ClassRunner.class) // 整合 
-@ContextConfiguration(locations="classpath:spring-context.xml") // 加载配置
+@RunWith(SpringJUnit4ClassRunner.class) // 整合
+@ContextConfiguration(locations = "classpath:spring-context.xml")
 public class AppTest  extends TestCase {
 	
     @Autowired CacheService cacheService;
@@ -29,7 +28,7 @@ public class AppTest  extends TestCase {
     	User user = new User();
     	user.setId("12345");
     	user.setPwd("56789");
-    	user.setName("hahaha");
+    	user.setName("Gogogog");
     	user.setEmail("hahaha@163.com");
     	cacheService.add("user", user, 100);
     	

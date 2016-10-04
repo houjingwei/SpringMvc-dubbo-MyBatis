@@ -1,11 +1,14 @@
 package com.rx.dsp.controller;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.dsp.service.cache.CacheService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +30,9 @@ public class HomeController {
 	@Resource // 注入
 	private UserService userService;
 
+    @Resource
+    private CacheService cacheService;
+
     public HomeController(){
         System.out.println("******************************");
     }
@@ -45,5 +51,14 @@ public class HomeController {
     	myMap.put("name",list.get(0).getName());
     	myMap.put("email",list.get(0).getEmail()) ;
         return new ModelAndView(new MappingJackson2JsonView(), myMap);
+    }
+
+    @RequestMapping(value = "/cache",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView cache(Map model){
+        List<User> list = userService.findList();
+        cacheService.add("user",list.get(0),1);
+        model.put("users",cacheService.get("user"));
+        return new ModelAndView(new MappingJackson2JsonView(), model);
     }
 }

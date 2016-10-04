@@ -125,5 +125,6 @@
 		<module>dsp-user-component</module>
 		<module>dsp-utils</module>
 		<module>dsp-cache-component</module>
-	</modules>
+        <module>dsp-shiro</module>
+    </modules>
 </project>

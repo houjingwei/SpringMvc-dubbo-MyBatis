@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dsp-cache-component/dsp-cache-component.iml" filepath="$PROJECT_DIR$/dsp-cache-component/dsp-cache-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-model/dsp-model.iml" filepath="$PROJECT_DIR$/dsp-model/dsp-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-parent.iml" filepath="$PROJECT_DIR$/dsp-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-service/dsp-service.iml" filepath="$PROJECT_DIR$/dsp-service/dsp-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-shiro/dsp-shiro.iml" filepath="$PROJECT_DIR$/dsp-shiro/dsp-shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-user-component/dsp-user-component.iml" filepath="$PROJECT_DIR$/dsp-user-component/dsp-user-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-utils/dsp-utils.iml" filepath="$PROJECT_DIR$/dsp-utils/dsp-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dsp-web/dsp-web.iml" filepath="$PROJECT_DIR$/dsp-web/dsp-web.iml" />
+    </modules>
+  </component>
+</project>
