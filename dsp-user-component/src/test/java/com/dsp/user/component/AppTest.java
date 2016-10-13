@@ -1,6 +1,7 @@
 package com.dsp.user.component;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,21 +18,35 @@ import junit.framework.TestCase;
  * Unit test for simple App.
  */
 
+@RunWith(SpringJUnit4ClassRunner.class) // 整合
+@ContextConfiguration(locations = "classpath:spring-context.xml") // 加载配置
+public class AppTest extends TestCase {
 
-@RunWith(SpringJUnit4ClassRunner.class) // 整合 
-@ContextConfiguration(locations="classpath:spring-context.xml") // 加载配置
-public class AppTest  extends TestCase
-{
-	
 	@Autowired // 注入
 	private UserService userService;
-    
-	@Test  
-    public void findUserList()  
-    {  
-        List<User> list = userService.findList();
-        System.out.println(list.get(0).getName());
-    } 
 
-    
+	@Test
+	public void findUserList() {
+		List<User> list = userService.findList();
+		System.out.println(list.get(0).getUsername());
+	}
+
+	@Test
+	public void findRoles() {
+		Set<String> list = userService.findRoles("hjw");
+		System.out.println(list.size());
+	}
+
+	@Test
+	public void findPe() {
+		Set<String> list = userService.findPermissions("hjw");
+		System.out.println(list.size());
+	}
+	
+	@Test
+	public void findUser() {
+		User user  = userService.findByUsername("hjw");
+		System.out.println(user.getUsername());
+	}
+
 }

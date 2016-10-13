@@ -2,18 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dsp.user.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.dsp.model.User" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" > 
-    id,name,pwd,email
+    username,password
   </sql>
   <select id="findList" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
-    from user
+    from users
   </select>
+  
+  
+  <select id="findRoles" parameterType="java.lang.String" resultType="java.lang.String">
+      select r.role from users u, roles r,users_roles ur where u.username=#{username} and u.id=ur.user_id and r.id=ur.role_id
+    </select>
+
+    <select id="findPermissions" parameterType="java.lang.String" resultType="java.lang.String">
+      select p.permission from users u, roles r, permissions p, users_roles ur, roles_permissions rp where u.username=#{username} and u.id=ur.user_id and r.id=ur.role_id and r.id=rp.role_id and p.id=rp.permission_id
+    </select>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultType="com.dsp.model.User">
+      select * from users where username = #{username}
+    </select>
   
 </mapper>

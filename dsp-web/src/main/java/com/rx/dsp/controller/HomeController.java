@@ -48,8 +48,8 @@ public class HomeController {
     public ModelAndView json(Model model){
     	Map<String,String> myMap = new HashMap<String,String>();
     	List<User> list = userService.findList();
-    	myMap.put("name",list.get(0).getName());
-    	myMap.put("email",list.get(0).getEmail()) ;
+    	myMap.put("name",list.get(0).getUsername());
+    	myMap.put("email",list.get(0).getPassword()) ;
         return new ModelAndView(new MappingJackson2JsonView(), myMap);
     }
 

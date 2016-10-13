@@ -1,6 +1,7 @@
 package com.dsp.user.component;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,21 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public List<User> findList() {
-		// TODO Auto-generated method stub
 		return userMapper.findList();
 	}
 
-	
+
+	public Set<String> findRoles(String username) {
+		return userMapper.findRoles(username);
+	}
+
+	public Set<String> findPermissions(String username) {
+		return userMapper.findPermissions(username);
+	}
+
+	public User findByUsername(String username) {
+		return userMapper.findByUsername(username);
+	}
+
 
 }

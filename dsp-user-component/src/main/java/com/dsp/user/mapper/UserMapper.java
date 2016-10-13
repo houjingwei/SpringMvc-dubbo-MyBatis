@@ -1,11 +1,18 @@
 package com.dsp.user.mapper;
 
 import java.util.List;
-
-import org.springframework.stereotype.Component;
+import java.util.Set;
 
 import com.dsp.model.User;
 
 public interface UserMapper {
-	public List<User> findList();
+
+    List<User> findList();
+
+    Set<String> findRoles(String username);
+
+    Set<String> findPermissions(String username);
+
+
+    User findByUsername(String username);
 }

@@ -12,6 +12,7 @@
 	<context:property-placeholder location="classpath:web.properties" />
 
 	<import resource="classpath:dubbo_consumer.xml"/>
+	<import resource="classpath:spring-shiro.xml"/>
 
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<!-- 多包扫描测试 -->

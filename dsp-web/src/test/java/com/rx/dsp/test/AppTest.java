@@ -25,7 +25,7 @@ public class AppTest  extends TestCase
     public void findUserList()  
     {  
         List<User> list = userService.findList();
-        System.out.println(list.get(1).getName());
+        System.out.println(list.get(1).getUsername());
     } 
 
     
