@@ -11,8 +11,8 @@
 	<dubbo:protocol id="dubbo1" name="dubbo" port="${dubbo.protocol}" />
 	<dubbo:protocol id="dubbo2" name="dubbo" port="${dubbo.protocol2}" />
 	
+	
 	<dubbo:reference  interface="com.dsp.service.user.UserService" id="userService" check="false" timeout="10000"/>
-
 	<dubbo:reference  interface="com.dsp.service.cache.CacheService" id="cacheService" check="false" timeout="10000"/>
 
 </beans>

@@ -1,7 +1,10 @@
 package com.rx.dsp.test;
 
 import java.util.List;
+import java.util.Set;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +17,21 @@ import com.dsp.service.user.UserService;
 import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 整合 
-@ContextConfiguration(locations="classpath:spring.xml") // 加载配置
+@ContextConfiguration(locations="classpath:spring-mvc.xml") // 加载配置
 public class AppTest  extends TestCase
 {
 	
 	@Autowired // 注入
 	private UserService userService;
     
-	@Test  
+	@Test 
     public void findUserList()  
     {  
         List<User> list = userService.findList();
-        System.out.println(list.get(1).getUsername());
+        System.out.println(list.get(0).getUsername());
     } 
+	
+	
 
     
 }

@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-		version="3.0"
-		metadata-complete="false">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<!--spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring.xml,classpath:spring-shiro.xml</param-value>
+		
+	</context-param>
 
 
-	<!-- shiro 安全过滤器 -->
-	<!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
-	<filter>
-		<filter-name>shiroFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<async-supported>true</async-supported>
-		<init-param>
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
-	<!-- Make sure any request you want accessible to Shiro is filtered. /* catches all -->
-	<!-- requests.  Usually this filter mapping is defined first (before all others) to -->
-	<!-- ensure that Shiro works in subsequent filters in the filter chain:             -->
-	<filter-mapping>
-		<filter-name>shiroFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+
 
 
 	<!--springMvc,配置DispatcherServlet -->
@@ -45,6 +37,22 @@
 	</servlet-mapping>
 
 
+	<!-- shiro 安全过滤器 -->
+	<!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 
 	<!--过滤器 -->
 	<filter>
@@ -61,7 +69,6 @@
 		<url-pattern>/</url-pattern>
 	</filter-mapping>
 
-	
 
 	<!-- 配置log4j配置文件路径 -->
 	<context-param>
@@ -78,6 +85,5 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
-
 
 </web-app>

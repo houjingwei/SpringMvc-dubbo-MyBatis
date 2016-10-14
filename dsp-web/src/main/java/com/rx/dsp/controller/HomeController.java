@@ -1,14 +1,12 @@
 package com.rx.dsp.controller;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.dsp.service.cache.CacheService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.dsp.model.User;
+import com.dsp.service.cache.CacheService;
 import com.dsp.service.user.UserService;
 
 /**
@@ -33,11 +32,8 @@ public class HomeController {
     @Resource
     private CacheService cacheService;
 
-    public HomeController(){
-        System.out.println("******************************");
-    }
-
     @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequiresAuthentication
     public String home(Model model){
         return "home";
     }

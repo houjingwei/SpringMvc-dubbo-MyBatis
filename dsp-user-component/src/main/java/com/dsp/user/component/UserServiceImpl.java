@@ -3,6 +3,7 @@ package com.dsp.user.component;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import com.dsp.user.mapper.UserMapper;
 @Service(value="userService")
 public class UserServiceImpl implements UserService{
 	
+	final Logger logger = Logger.getLogger(UserServiceImpl.class);
+	
 	@Autowired UserMapper userMapper;
 	
 	public UserServiceImpl(){
@@ -20,19 +23,23 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public List<User> findList() {
+		System.out.println("request findList()");
 		return userMapper.findList();
 	}
 
 
 	public Set<String> findRoles(String username) {
+		System.out.println("request findRoles() >> param: username -- "+username);
 		return userMapper.findRoles(username);
 	}
 
 	public Set<String> findPermissions(String username) {
+		System.out.println("request findPermissions() >> param: username -- "+username);
 		return userMapper.findPermissions(username);
 	}
 
 	public User findByUsername(String username) {
+		System.out.println("request findByUsername() >> param: username -- "+username);
 		return userMapper.findByUsername(username);
 	}
 
