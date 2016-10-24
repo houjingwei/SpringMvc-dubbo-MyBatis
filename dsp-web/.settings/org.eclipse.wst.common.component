@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/freemarker"/>
         <dependent-module archiveName="dsp-service-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-service/dsp-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -13,10 +14,7 @@
         <dependent-module archiveName="dsp-utils-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-utils/dsp-utils">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="dsp-user-component-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsp-user-component/dsp-user-component">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <property name="context-root" value="dsp-web"/>
         <property name="java-output-path" value="/dsp-web/target/classes"/>
+        <property name="context-root" value="dsp-web"/>
     </wb-module>
 </project-modules>

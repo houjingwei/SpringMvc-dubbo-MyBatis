@@ -122,9 +122,10 @@
 		<module>dsp-web</module>
 		<module>dsp-service</module>
 		<module>dsp-model</module>
-		<module>dsp-user-component</module>
 		<module>dsp-utils</module>
-		<module>dsp-cache-component</module>
-        <module>dsp-shiro</module>
-    </modules>
+        
+        <module>dao-core</module>
+        <module>dsp-cache-dao</module>
+        <module>dsp-user-dao</module>
+	</modules>
 </project>

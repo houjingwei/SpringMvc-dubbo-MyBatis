@@ -23,7 +23,7 @@ import com.dsp.service.user.UserService;
  * Created by Administrator on 2016/9/12 0012.
  */
 @Controller
-@RequestMapping
+@RequestMapping(value="/home")
 public class HomeController {
 	
 	@Resource // 注入
@@ -32,14 +32,15 @@ public class HomeController {
     @Resource
     private CacheService cacheService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/index")
     @RequiresAuthentication
     public String home(Model model){
-        return "home";
+
+    	return "home";
     }
     
     
-    @RequestMapping(value = "/json",method = RequestMethod.GET)
+    @RequestMapping(value = "/json")
     @ResponseBody
     public ModelAndView json(Model model){
     	Map<String,String> myMap = new HashMap<String,String>();
