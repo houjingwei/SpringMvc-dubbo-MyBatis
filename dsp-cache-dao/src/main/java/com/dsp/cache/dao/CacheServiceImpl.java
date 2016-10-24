@@ -1,6 +1,4 @@
-package com.dsp.cache.component;
-
-
+package com.dsp.cache.dao;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -16,21 +14,21 @@ import org.springframework.stereotype.Service;
 import com.dsp.service.cache.CacheService;
 import com.dsp.utils.exception.CustomException;
 import com.dsp.utils.exception.CustomExceptionEnum;
-@Service(value="cacheService")
-public class CacheServiceImpl implements CacheService{
+
+
+@Service(value = "cacheService")
+public class CacheServiceImpl implements CacheService {
 
 	@Autowired
 	private RedisTemplate<String, Serializable> redisTemplate;
 
-	public void add(String key, Serializable value, int minutes)
-			throws CustomException {
+	public void add(String key, Serializable value, int minutes) throws CustomException {
 		try {
 			redisTemplate.opsForValue().set(key, value);
 			redisTemplate.expire(key, minutes, TimeUnit.MINUTES);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -39,14 +37,12 @@ public class CacheServiceImpl implements CacheService{
 			redisTemplate.opsForValue().set(key, value);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 
 	}
 
-	public void addList(String key, Collection<Serializable> values)
-			throws CustomException {
+	public void addList(String key, Collection<Serializable> values) throws CustomException {
 		try {
 			if (values != null && values.size() > 0) {
 				remove(key);
@@ -54,33 +50,28 @@ public class CacheServiceImpl implements CacheService{
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 
 	}
 
-	public void addList(String key, Collection<Serializable> values, int minutes)
-			throws CustomException {
+	public void addList(String key, Collection<Serializable> values, int minutes) throws CustomException {
 		try {
 			remove(key);
 			redisTemplate.opsForList().leftPushAll(key, values);
 			redisTemplate.expire(key, minutes, TimeUnit.MINUTES);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
-	public void addOneToList(String key, Serializable value)
-			throws CustomException {
+	public void addOneToList(String key, Serializable value) throws CustomException {
 		try {
 			redisTemplate.opsForList().leftPush(key, value);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -89,8 +80,7 @@ public class CacheServiceImpl implements CacheService{
 			return redisTemplate.opsForValue().get(key);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -100,8 +90,7 @@ public class CacheServiceImpl implements CacheService{
 			return redisTemplate.opsForList().range(key, 0, size);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -115,24 +104,21 @@ public class CacheServiceImpl implements CacheService{
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
 	public long getCountLike(String keyPrefix) throws CustomException {
 		try {
 			if (StringUtils.isNotEmpty(keyPrefix)) {
-				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix
-						+ "*");
+				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix + "*");
 				return matchedCacheKeys.size();
 			} else {
 				return 0;
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -141,8 +127,7 @@ public class CacheServiceImpl implements CacheService{
 			redisTemplate.delete(redisTemplate.keys(key));
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 
 	}
@@ -150,16 +135,14 @@ public class CacheServiceImpl implements CacheService{
 	public void removeLike(String keyPrefix) throws CustomException {
 		try {
 			if (StringUtils.isNotEmpty(keyPrefix)) {
-				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix
-						+ "*");
+				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix + "*");
 				for (String cacheKey : matchedCacheKeys) {
 					this.remove(cacheKey);
 				}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 
@@ -167,16 +150,14 @@ public class CacheServiceImpl implements CacheService{
 
 		try {
 			if (StringUtils.isNotEmpty(keyPrefix)) {
-				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix
-						+ "*");
+				Set<String> matchedCacheKeys = redisTemplate.keys(keyPrefix + "*");
 				return matchedCacheKeys.size();
 			} else {
 				return 0;
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR,
-					ex.getMessage());
+			throw new CustomException(CustomExceptionEnum.EXC_CACHE_ERROR, ex.getMessage());
 		}
 	}
 

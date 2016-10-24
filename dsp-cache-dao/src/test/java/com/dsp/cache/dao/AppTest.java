@@ -1,4 +1,4 @@
-package com.dsp.cache.component;
+package com.dsp.cache.dao;
 
 import java.util.List;
 

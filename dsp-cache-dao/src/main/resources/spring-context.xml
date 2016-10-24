@@ -23,5 +23,6 @@
 	<import resource="classpath:spring-redis.xml" />
 	
 	<dubbo:service interface="com.dsp.service.cache.CacheService" ref="cacheService" />
+	
 
 </beans>

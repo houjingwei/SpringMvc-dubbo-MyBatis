@@ -12,6 +12,7 @@ public class User implements Serializable{
 	private Long id;
 	private String username;
 	private String password;
+	private String photo;
 	private String salt;
 
 	private Boolean locked = Boolean.FALSE;
@@ -41,14 +42,6 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
 	public Boolean getLocked() {
 		return locked;
 	}
@@ -56,4 +49,22 @@ public class User implements Serializable{
 	public void setLocked(Boolean locked) {
 		this.locked = locked;
 	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
+	
 }

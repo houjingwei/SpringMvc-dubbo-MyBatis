@@ -14,10 +14,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
+  	<dependency>
+  		<groupId>com.rx.dsp</groupId>
+  		<artifactId>dsp-utils</artifactId>
+  		<version>1.0.0</version>
+  	</dependency>
   </dependencies>
 </project>

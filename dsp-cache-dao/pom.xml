@@ -8,18 +8,20 @@
 		<artifactId>dsp-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>dsp-cache-component</artifactId>
-	<name>dsp-cache-component</name>
+	<artifactId>dsp-cache-dao</artifactId>
+	<name>dsp-cache-dao</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	
 	<dependencies>
+	
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -34,30 +36,27 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-
-
-
-
-
-
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
+		
 
-		<!-- https://mvnrepository.com/artifact/com.jolira/onejar-maven-plugin -->
 		<dependency>
 			<groupId>com.jolira</groupId>
 			<artifactId>onejar-maven-plugin</artifactId>
@@ -84,21 +83,11 @@
 
 
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<version>3.4.6</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.101tec</groupId>
-			<artifactId>zkclient</artifactId>
-			<version>0.9</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -111,19 +100,11 @@
 			<artifactId>dsp-service</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.1</version>
-		</dependency>
-
-
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<groupId>com.rx.dsp</groupId>
+			<artifactId>dsp-model</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
