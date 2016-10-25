@@ -6,12 +6,12 @@
 		<artifactId>dsp-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	
+
 	<artifactId>dsp-user-dao</artifactId>
 	<name>dsp-user-dao</name>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -35,23 +35,24 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
 
@@ -82,7 +83,7 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.26</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -103,6 +104,11 @@
 		<dependency>
 			<groupId>com.rx.dsp</groupId>
 			<artifactId>dsp-model</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.rx.dsp</groupId>
+			<artifactId>dao-core</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
