@@ -70,18 +70,15 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.3.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.0.26</version>
 		</dependency>
 
 		<dependency>
@@ -96,14 +93,15 @@
 			<version>1.8.1</version>
 		</dependency>
 
+		
 		<dependency>
 			<groupId>com.rx.dsp</groupId>
-			<artifactId>dsp-service</artifactId>
+			<artifactId>dsp-model</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.rx.dsp</groupId>
-			<artifactId>dsp-model</artifactId>
+			<artifactId>dsp-service</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>

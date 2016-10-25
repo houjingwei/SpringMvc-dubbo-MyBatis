@@ -123,7 +123,6 @@
 		<module>dsp-service</module>
 		<module>dsp-model</module>
 		<module>dsp-utils</module>
-        
         <module>dao-core</module>
         <module>dsp-cache-dao</module>
         <module>dsp-user-dao</module>
