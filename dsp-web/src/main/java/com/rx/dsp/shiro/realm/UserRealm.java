@@ -43,7 +43,6 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         authorizationInfo.setRoles(this.userService.findRoles(username));
         authorizationInfo.setStringPermissions(this.userService.findPermissions(username));
-
         return authorizationInfo;
     }
 
@@ -69,7 +68,10 @@ public class UserRealm extends AuthorizingRealm {
         );
         SecurityUtils.getSubject().getSession().setAttribute("uid",  user.getId());
         System.out.println("authenticationinfo end ...");
+        
+        //登陆成功，将用户存入session
         ShiroSessionUtils.setLoginUser(user);
+        
         /**
 		 * 关闭浏览器，再打开后，虽然授权缓存了，但是认证是必须的，在认证成功后，清除之前的缓存。
 		 */

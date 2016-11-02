@@ -91,8 +91,11 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
+				/** = anon
 				/assets/** = anon
 				/logout = anon
+				/home/** = authc
+				
 			</value>
 		</property>
 	</bean>

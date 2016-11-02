@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import com.dsp.model.Role;
 import com.dsp.model.User;
 import com.dsp.service.cache.CacheService;
+import com.dsp.service.user.RoleService;
 import com.dsp.service.user.UserService;
+import com.rx.dsp.shiro.ShiroSessionUtils;
 
 /**
  * Created by Administrator on 2016/9/12 0012.
@@ -28,6 +31,9 @@ public class HomeController {
 	
 	@Resource // 注入
 	private UserService userService;
+	
+	@Resource // 注入
+	private RoleService roleService;
 
     @Resource
     private CacheService cacheService;
@@ -35,7 +41,11 @@ public class HomeController {
     @RequestMapping(value = "/index")
     @RequiresAuthentication
     public String home(Model model){
-
+    	User user = ShiroSessionUtils.getLoginUser();
+    	//加载用户的角色和权限
+    	List<Role> userRoles = roleService.findUserRolesById(user.getId());
+    	
+    	
     	return "home";
     }
     
