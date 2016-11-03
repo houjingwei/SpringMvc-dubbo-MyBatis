@@ -9,7 +9,7 @@ public class User implements Serializable{
 	 */
 	
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private Integer id;
 	private String username;
 	private String password;
 	private String photo;
@@ -18,11 +18,11 @@ public class User implements Serializable{
 	private Boolean locked = Boolean.FALSE;
 
 
-	public Long getId() {
+
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
