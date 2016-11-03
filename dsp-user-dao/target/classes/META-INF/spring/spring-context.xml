@@ -13,13 +13,10 @@
 
 	<context:component-scan base-package="com.dsp.user" />
 
-	<dubbo:application name="${dubbo.application}" />
-	<dubbo:registry address="${dubbo.registry}" />
-	<dubbo:protocol name="dubbo" port="${dubbo.protocol}" />
-
-
 	<import resource="classpath:spring-mybatis.xml" />
 	
-	<dubbo:service interface="com.dsp.service.user.UserService" ref="userService" />
+	<import resource="classpath:dubbo-provide.xml" />
+	<import resource="classpath:dubbo-consume.xml" />
+	
 
 </beans>

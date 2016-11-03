@@ -1,5 +1,7 @@
 package com.dsp.user.dao;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dsp.model.User;
+import com.dsp.service.cache.CacheService;
 import com.dsp.service.user.UserService;
 
 import junit.framework.TestCase;
@@ -20,10 +23,13 @@ import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 整合
 @ContextConfiguration(locations = "classpath:spring-context.xml") // 加载配置
-public class AppTest extends TestCase {
+public class UserTest extends TestCase {
 
-	@Autowired // 注入
+	@Autowired 
 	private UserService userService;
+	
+	@Autowired 
+	private CacheService cacheService;
 
 	@Test
 	public void findUserList() {
