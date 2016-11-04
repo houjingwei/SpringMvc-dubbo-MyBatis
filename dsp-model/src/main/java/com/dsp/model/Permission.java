@@ -1,13 +1,10 @@
 package com.dsp.model;
 
-import java.io.Serializable;
+public class Permission extends BaseModel{
 
-public class Permission implements Serializable{
-
-	
-	 /**@Fields serialVersionUID : TODO  
+	/**
+	 * 
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String permission;

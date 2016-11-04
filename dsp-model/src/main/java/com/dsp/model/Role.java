@@ -1,8 +1,6 @@
 package com.dsp.model;
 
-import java.io.Serializable;
-
-public class Role implements Serializable{
+public class Role extends BaseModel{
 
 	
 	 /**@Fields serialVersionUID : TODO  

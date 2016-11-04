@@ -10,13 +10,8 @@
 	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<context:property-placeholder location="classpath:config.properties" />
-
 	<context:component-scan base-package="com.dsp.user" />
-
 	<import resource="classpath:spring-mybatis.xml" />
-	
-	<import resource="classpath:dubbo-provide.xml" />
-	<import resource="classpath:dubbo-consume.xml" />
-	
+	<import resource="classpath:spring-dubbo.xml" />
 
 </beans>

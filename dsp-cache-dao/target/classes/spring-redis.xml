@@ -16,24 +16,23 @@
 
 	</bean>
 
+	<bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+
 	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"
 		p:pool-config-ref="poolConfig" />
 
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
-		<property name="connectionFactory" ref="connectionFactory"></property>
-		<property name="keySerializer">
-			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
-		</property>
-		<property name="valueSerializer">
-			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
-		</property>
-		<property name="hashKeySerializer">
-			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
-		</property>
-		<property name="hashValueSerializer">
-			<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
-		</property>
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="hashKeySerializer" ref="stringSerializer" />
+		<property name="keySerializer" ref="stringSerializer" />
+		<property name="stringSerializer" ref="stringSerializer" />
+		<property name="enableTransactionSupport" value="false" />
 
+	</bean>
+
+
+	<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+		<constructor-arg ref="redisTemplate" />
 	</bean>
 
 </beans>

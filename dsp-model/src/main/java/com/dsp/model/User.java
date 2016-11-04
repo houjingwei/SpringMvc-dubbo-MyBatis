@@ -1,13 +1,10 @@
 package com.dsp.model;
 
-import java.io.Serializable;
+public class User extends BaseModel{
 
-public class User implements Serializable{
-
-	
-	 /**@Fields serialVersionUID : TODO  
+	/**
+	 * 
 	 */
-	
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String username;
