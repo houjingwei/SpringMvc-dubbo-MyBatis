@@ -12,11 +12,15 @@
 ## 运行方式
 
 > cd SpringMvc-dubbo-MyBatis
+
 > mvn clean install 
+
 > cd dsp-cache**/target
+
 > java -jar dsp****one**jar
   
 > cd ../dsp-user**/target
+
 > java -jar dsp****one**jar
   
   
