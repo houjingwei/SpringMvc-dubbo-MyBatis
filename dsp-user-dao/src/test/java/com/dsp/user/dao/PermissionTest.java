@@ -30,7 +30,7 @@ public class PermissionTest extends TestCase {
 		List<Permission> list = permissionService.findAllPermissions();
 		if (null != list && list.size() > 0) {
 			for (Permission P : list) {
-				System.out.println(P.getDescription());
+				System.out.println(P.getpRemark());
 			}
 		}
 
@@ -41,7 +41,7 @@ public class PermissionTest extends TestCase {
 		List<Permission> list = permissionService.findUserPermissionsById(1);
 		if (null != list && list.size() > 0) {
 			for (Permission P : list) {
-				System.out.println(P.getDescription());
+				System.out.println(P.getpRemark());
 			}
 		}
 	}

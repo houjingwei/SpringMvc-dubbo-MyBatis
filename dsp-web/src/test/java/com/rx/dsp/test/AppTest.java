@@ -9,7 +9,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dsp.model.User;
+import com.dsp.service.user.RoleService;
 import com.dsp.service.user.UserService;
+import com.rx.dsp.shiro.RedisCacheManager;
 
 import junit.framework.TestCase;
 
@@ -19,10 +21,16 @@ public class AppTest extends TestCase {
 
 	@Autowired // 注入
 	private UserService userService;
+	
+	
+	@Autowired // 注入
+	private RoleService roleService;
+	
 
 	@Test
 	public void findUserList() {
 		List<User> list = userService.findList();
+		roleService.findAllRoles();
 		System.out.println(list.get(0).getUsername());
 	}
 

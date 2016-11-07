@@ -8,9 +8,9 @@ import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisManager {
 	
-	private String host = "127.0.0.1";
+	private String host = "";
 	
-	private int port = 6379;
+	private int port = 0;
 	
 	// 0 - never expire
 	private int expire = 0;

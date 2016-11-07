@@ -11,6 +11,7 @@
 						data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
 						class="clear"> <span class="block">
 							<strong class="font-bold" style="font-size: 15px;">
+							<@shiro.hasRole manager></@shiro.hasRole>
 								<@shiro.guest>
 								    欢迎游客访问，<a href="${path}/login.jsp">点击登录</a><br/>
 								</@shiro.guest>
@@ -19,9 +20,9 @@
 								    欢迎[${user.username!''}]登录，<a href="${path}/logout">点击退出</a><br/>
 								</@shiro.user>
 							</strong></span> 
-							<!-- <span class="text-muted text-xs block">超级管理员</span> -->
 					</span>
 					</a>
+					
 					<ul class="dropdown-menu animated fadeInRight m-t-xs">
 						<li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>
 						<li><a class="J_menuItem" href="profile.html">个人资料</a></li>

@@ -45,5 +45,12 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 
+	public User saveUser() {
+		System.out.println("execute.......");
+		Integer a = null;
+		int b = a/10;
+		return null;
+	}
+
 
 }

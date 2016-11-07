@@ -41,4 +41,7 @@ public interface UserService {
 	 * @return
 	 */
 	User findByUsername(String username);
+	
+	
+	User saveUser();
 }

@@ -32,13 +32,24 @@ public class RoleServiceImpl implements RoleService{
 			System.out.println("redis获取");
 			list = (List<Role>) cacheService.getList("findAllRoles");
 		}
-		
 		return list;
 		
 	}
 
 	public List<Role> findUserRolesById(Integer id) {
-		return roleMapper.findUserRolesById(id);
+		
+		List<Role> list = null;
+		if(!cacheService.exists("findAllRoles")){
+			System.out.println("数据库获取");
+			list = roleMapper.findUserRolesById(id);
+			if(null!=list){
+				cacheService.addList("findUserRolesById", list,1);
+			}
+		}else{
+			System.out.println("redis获取");
+			list = (List<Role>) cacheService.getList("findUserRolesById");
+		}
+		return list;
 	}
 
 }

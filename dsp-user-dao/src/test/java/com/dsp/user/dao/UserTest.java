@@ -52,5 +52,11 @@ public class UserTest extends TestCase {
 		User user  = userService.findByUsername("hjw");
 		System.out.println(user.getUsername());
 	}
+	
+	@Test
+	public void save() {
+		User user  = userService.saveUser();
+		System.out.println("*******");
+	}
 
 }

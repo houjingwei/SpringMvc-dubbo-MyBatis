@@ -6,36 +6,36 @@ public class Permission extends BaseModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String permission;
-	private String description;
-	private String available;
+	private Integer pId;
+	private String pName;
+	private String pRemark;
+	private String pAvailable;
+	public Integer getpId() {
+		return pId;
+	}
+	public void setpId(Integer pId) {
+		this.pId = pId;
+	}
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getpRemark() {
+		return pRemark;
+	}
+	public void setpRemark(String pRemark) {
+		this.pRemark = pRemark;
+	}
+	public String getpAvailable() {
+		return pAvailable;
+	}
+	public void setpAvailable(String pAvailable) {
+		this.pAvailable = pAvailable;
+	}
 
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getPermission() {
-		return permission;
-	}
 	
-	public void setPermission(String permission) {
-		this.permission = permission;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getAvailable() {
-		return available;
-	}
-	public void setAvailable(String available) {
-		this.available = available;
-	}
 	
 	
 	

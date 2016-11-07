@@ -12,7 +12,9 @@
 	<dubbo:protocol id="dubbo2" name="dubbo" port="${dubbo.protocol2}" />
 	
 	
-	<dubbo:reference  interface="com.dsp.service.user.UserService" id="userService" check="false" timeout="10000"/>
-	<dubbo:reference  interface="com.dsp.service.cache.CacheService" id="cacheService" check="false" timeout="10000"/>
+	<dubbo:reference  interface="com.dsp.service.user.UserService" cluster="failover" retries="2" id="userService" check="false" timeout="10000"/>
+	<dubbo:reference  interface="com.dsp.service.user.RoleService"  cluster="failover" retries="2" id="roleService" check="false" timeout="10000"/>
+	<dubbo:reference  interface="com.dsp.service.user.PermissionService" cluster="failover" retries="2"  id="permissionService" check="false" timeout="10000"/>
+	<dubbo:reference  interface="com.dsp.service.cache.CacheService" cluster="failover" retries="2"  id="cacheService" check="false" timeout="10000"/>
 	
 </beans>

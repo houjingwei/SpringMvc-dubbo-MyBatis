@@ -1,5 +1,7 @@
 package com.dsp.model;
 
+import java.util.List;
+
 public class Role extends BaseModel{
 
 	
@@ -7,34 +9,43 @@ public class Role extends BaseModel{
 	 */
 	
 	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String role;
-	private String description;
-	private String available;
+	private Integer rId;
+	private String rName;
+	private String rRemark;
+	private String rAvailable;
+	private List<Permission> pList;
 	
-	public Integer getId() {
-		return id;
+	
+	
+	public Integer getrId() {
+		return rId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setrId(Integer rId) {
+		this.rId = rId;
 	}
-	public String getRole() {
-		return role;
+	public String getrName() {
+		return rName;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setrName(String rName) {
+		this.rName = rName;
 	}
-	public String getDescription() {
-		return description;
+	public String getrRemark() {
+		return rRemark;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setrRemark(String rRemark) {
+		this.rRemark = rRemark;
 	}
-	public String getAvailable() {
-		return available;
+	public String getrAvailable() {
+		return rAvailable;
 	}
-	public void setAvailable(String available) {
-		this.available = available;
+	public void setrAvailable(String rAvailable) {
+		this.rAvailable = rAvailable;
+	}
+	public List<Permission> getpList() {
+		return pList;
+	}
+	public void setpList(List<Permission> pList) {
+		this.pList = pList;
 	}
 	
 	
