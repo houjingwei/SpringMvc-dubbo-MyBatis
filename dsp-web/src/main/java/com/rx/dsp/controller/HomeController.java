@@ -40,12 +40,11 @@ public class HomeController {
 
     @RequestMapping(value = "/index")
     @RequiresAuthentication
-    public String home(Model model){
+    public String home(Map map){
     	User user = ShiroSessionUtils.getLoginUser();
     	//加载用户的角色和权限
-    	List<Role> userRoles = roleService.findUserRolesById(user.getId());
-    	
-    	
+    	List<Role> roles = roleService.findAllRoles();
+    	map.put("roles", roles);
     	return "home";
     }
     

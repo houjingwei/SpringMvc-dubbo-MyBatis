@@ -11,7 +11,7 @@
 						data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
 						class="clear"> <span class="block">
 							<strong class="font-bold" style="font-size: 15px;">
-							<@shiro.hasRole manager></@shiro.hasRole>
+							
 								<@shiro.guest>
 								    欢迎游客访问，<a href="${path}/login.jsp">点击登录</a><br/>
 								</@shiro.guest>
@@ -34,26 +34,27 @@
 				</div>
 				<div class="logo-element">H+</div>
 			</li>
-			<li><a href="#"> <i class="fa fa-home"></i> <span
-					class="nav-label">主页</span> <span class="fa arrow"></span>
-			</a>
-				<ul class="nav nav-second-level">
-					<li><a class="J_menuItem" href="index_v1.html" data-index="0">用户列表</a></li>
-					<li><a class="J_menuItem" href="index_v2.html">主页示例二</a></li>
-					<li><a class="J_menuItem" href="index_v3.html">主页示例三</a></li>
-					<li><a class="J_menuItem" href="index_v4.html">主页示例四</a></li>
-					<li><a href="index_v5.html" target="_blank">主页示例五</a></li>
-				</ul></li>
-
-
-			<li><a href="mailbox.html"><i class="fa fa-envelope"></i> <span
-					class="nav-label">信箱 </span><span
-					class="label label-warning pull-right">16</span></a>
-				<ul class="nav nav-second-level">
-					<li><a class="J_menuItem" href="mailbox.html">收件箱</a></li>
-					<li><a class="J_menuItem" href="mail_detail.html">查看邮件</a></li>
-					<li><a class="J_menuItem" href="mail_compose.html">写信</a></li>
-				</ul></li>
+			
+			<#if (roles?? && roles?size>0)>
+				<#list roles as role>
+					<li>
+						<@shiro.hasRole name="${role.rName!''}">
+							<a href="#"> <span class="nav-label">${role.rRemark!''}</span> <span class="fa arrow"></span> </a>
+						 </@shiro.hasRole> 
+						 <#if role.pList??>
+						<ul class="nav nav-second-level">
+						    <#list role.pList as p>
+						    	<@shiro.hasPermission  name="${p.pName!''}">
+									<li><a class="J_menuItem" href="index_v1.html" data-index="0">${p.pRemark!''}</a></li>
+								</@shiro.hasPermission>
+							</#list>
+						</ul>
+						</#if>
+					</li>
+				</#list>
+			</#if>
+			
+			
 		</ul>
 	</div>
 </nav>

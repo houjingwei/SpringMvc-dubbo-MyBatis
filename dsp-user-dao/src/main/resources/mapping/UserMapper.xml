@@ -20,11 +20,11 @@
   
   
   <select id="findRoles" parameterType="java.lang.String" resultType="java.lang.String">
-      select r.role from users u, roles r,users_roles ur where u.username=#{username} and u.id=ur.user_id and r.id=ur.role_id
+      select r.rName from users u, roles r,users_roles ur where u.username=#{username} and u.id=ur.user_id and r.rId=ur.role_id
     </select>
 
     <select id="findPermissions" parameterType="java.lang.String" resultType="java.lang.String">
-      select p.permission from users u, roles r, permissions p, users_roles ur, roles_permissions rp where u.username=#{username} and u.id=ur.user_id and r.id=ur.role_id and r.id=rp.role_id and p.id=rp.permission_id
+      select p.pName from users u, roles r, permissions p, users_roles ur, roles_permissions rp where u.username=#{username} and u.id=ur.user_id and r.rId=ur.role_id and r.rId=rp.role_id and p.pId=rp.permission_id
     </select>
 
     <select id="findByUsername" parameterType="java.lang.String" resultType="com.dsp.model.User">
