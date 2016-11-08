@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.dsp.common.BootPage;
 import com.dsp.model.Role;
 import com.dsp.service.user.RoleService;
 
@@ -43,6 +44,14 @@ public class RoleTest extends TestCase {
 				System.out.println(role.getRemark());
 			}
 		}
+	}
+	
+	
+	@Test
+	public void pageRole() {
+		BootPage<Role> boot = roleService.findPageRoles(new BootPage<Role>(1,3));
+		System.out.println(boot);
+
 	}
 
 }

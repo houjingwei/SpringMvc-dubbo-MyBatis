@@ -35,17 +35,17 @@
 				<div class="logo-element">H+</div>
 			</li>
 			
-			<#if (roles?? && roles?size>0)>
-				<#list roles as role>
+			<#if (resources?? && resources?size>0)>
+				<#list resources as res>
 					<li>
-						<@shiro.hasRole name="${role.rName!''}">
-							<a href="#"> <span class="nav-label">${role.rRemark!''}</span> <span class="fa arrow"></span> </a>
-						 </@shiro.hasRole> 
-						 <#if role.pList??>
+						<@shiro.hasPermission name="${res.name!''}">
+							<a href="#"> <span class="nav-label">${res.remark!''}</span> <span class="fa arrow"></span> </a>
+						 </@shiro.hasPermission> 
+						 <#if res.mList??>
 						<ul class="nav nav-second-level">
-						    <#list role.pList as p>
-						    	<@shiro.hasPermission  name="${p.pName!''}">
-									<li><a class="J_menuItem" href="index_v1.html" data-index="0">${p.pRemark!''}</a></li>
+						    <#list res.mList as p>
+						    	<@shiro.hasPermission  name="${p.name!''}">
+						    		<li><a href="${path}${p.url!''}">${p.remark!''}</a></li>
 								</@shiro.hasPermission>
 							</#list>
 						</ul>
@@ -58,3 +58,11 @@
 		</ul>
 	</div>
 </nav>
+<script>
+function goTo(path){
+alert(path);
+}
+
+
+
+</script>

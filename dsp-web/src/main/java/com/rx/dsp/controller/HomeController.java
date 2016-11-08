@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import com.dsp.model.Role;
 import com.dsp.model.User;
 import com.dsp.service.cache.CacheService;
+import com.dsp.service.user.ResourceService;
 import com.dsp.service.user.RoleService;
 import com.dsp.service.user.UserService;
 import com.rx.dsp.shiro.ShiroSessionUtils;
@@ -33,7 +34,7 @@ public class HomeController {
 	private UserService userService;
 	
 	@Resource // 注入
-	private RoleService roleService;
+	private ResourceService resourceService;
 
     @Resource
     private CacheService cacheService;
@@ -43,8 +44,8 @@ public class HomeController {
     public String home(Map map){
     	User user = ShiroSessionUtils.getLoginUser();
     	//加载用户的角色和权限
-    	List<Role> roles = roleService.findAllRoles();
-    	map.put("roles", roles);
+    	List<com.dsp.model.Resource> resources = resourceService.findAllResourcesAndMenu();
+    	map.put("resources", resources);
     	return "home";
     }
     

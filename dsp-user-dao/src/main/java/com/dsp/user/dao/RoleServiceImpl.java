@@ -6,10 +6,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dsp.common.BootPage;
 import com.dsp.model.Role;
 import com.dsp.service.cache.CacheService;
 import com.dsp.service.user.RoleService;
 import com.dsp.user.mapper.RoleMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service(value="roleService")
 public class RoleServiceImpl implements RoleService{
@@ -50,6 +54,15 @@ public class RoleServiceImpl implements RoleService{
 			list = (List<Role>) cacheService.getList("findUserRolesById");
 		}
 		return list;
+	}
+
+	public BootPage<Role> findPageRoles(BootPage page) {
+		PageHelper.startPage(page.getOffset(), page.getLimit());
+		List<Role> list = roleMapper.findAllRoles();
+		PageInfo info = new PageInfo(list);
+		page.setRows(info.getList());
+		page.setTotal(info.getTotal());
+		return page;
 	}
 
 }

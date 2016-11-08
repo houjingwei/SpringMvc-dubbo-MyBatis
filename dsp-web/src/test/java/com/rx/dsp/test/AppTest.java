@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.dsp.common.BootPage;
+import com.dsp.model.Role;
 import com.dsp.model.User;
 import com.dsp.service.user.RoleService;
 import com.dsp.service.user.UserService;
@@ -29,9 +31,8 @@ public class AppTest extends TestCase {
 
 	@Test
 	public void findUserList() {
-		List<User> list = userService.findList();
-		roleService.findAllRoles();
-		System.out.println(list.get(0).getUsername());
+		BootPage<Role> boot = roleService.findPageRoles(new BootPage<Role>(1,3));
+		System.out.println(boot);
 	}
 
 }
