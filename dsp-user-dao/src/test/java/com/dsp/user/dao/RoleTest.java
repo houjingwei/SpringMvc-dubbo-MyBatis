@@ -29,7 +29,7 @@ public class RoleTest extends TestCase {
 		List<Role> list = roleService.findAllRoles();
 		if (null != list && list.size() > 0) {
 			for (Role role : list) {
-				System.out.println(role.getrRemark());
+				System.out.println(role.getRemark());
 			}
 		}
 
@@ -40,7 +40,7 @@ public class RoleTest extends TestCase {
 		List<Role> list = roleService.findUserRolesById(1);
 		if (null != list && list.size() > 0) {
 			for (Role role : list) {
-				System.out.println(role.getrRemark());
+				System.out.println(role.getRemark());
 			}
 		}
 	}

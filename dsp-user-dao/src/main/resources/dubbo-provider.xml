@@ -8,6 +8,6 @@
 
 	<dubbo:service interface="com.dsp.service.user.UserService" ref="userService" />
 	<dubbo:service interface="com.dsp.service.user.RoleService" ref="roleService" />
-	<dubbo:service interface="com.dsp.service.user.PermissionService" ref="permissionService" />
+	<dubbo:service interface="com.dsp.service.user.ResourceService" ref="resourceService" />
 
 </beans>

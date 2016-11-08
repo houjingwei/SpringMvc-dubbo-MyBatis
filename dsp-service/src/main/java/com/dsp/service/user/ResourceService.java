@@ -2,13 +2,17 @@ package com.dsp.service.user;
 
 import java.util.List;
 
-import com.dsp.model.Permission;
+import com.dsp.model.Resource;
 
-public interface PermissionService {
+public interface ResourceService {
 	
+	
+	List<Resource> findUserResourcesById(Integer id);
 
-	List<Permission> findAllPermissions();
+	List<Resource> findAllResources();
 	
-	List<Permission> findUserPermissionsById(Integer id);
+	List<Resource> findAllResourcesAndMenu();
+	
+	List<Resource> findAllResourcesAndMenuAndItem();
 	
 }

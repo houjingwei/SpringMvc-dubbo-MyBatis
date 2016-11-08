@@ -2,13 +2,18 @@ package com.dsp.user.mapper;
 
 import java.util.List;
 
-import com.dsp.model.Permission;
+import com.dsp.model.Resource;
 
 
-public interface PermissionMapper {
+public interface ResourceMapper {
 
 
-	List<Permission> findAllPermissions();
+	List<Resource> findAllResources();
 
-	List<Permission> findUserPermissionsById(Integer id);
+	List<Resource> findUserResourcesById(Integer id);
+
+
+	List<Resource> findAllResourcesAndMenu();
+
+	List<Resource> findAllResourcesAndMenuAndItem();
 }
